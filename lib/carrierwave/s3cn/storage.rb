@@ -14,7 +14,7 @@ module CarrierWave
           @s3cn_access_key_id = options[:s3cn_access_key_id]
           @s3cn_secret_access_key = options[:s3cn_secret_access_key]
           @s3cn_protocol = options[:s3cn_protocol]
-          @s3cn_bucket_private = options[:s3cn_bucket_private] || true
+          @s3cn_bucket_private = options[:s3cn_bucket_private].nil? ? true : options[:s3cn_bucket_private]
           init
         end
 
