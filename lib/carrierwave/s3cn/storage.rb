@@ -20,7 +20,8 @@ module CarrierWave
 
         def store(file, key)
           stored_file = file.to_file
-          @s3cn_bucket_obj.objects.create(key, stored_file)
+          permission = @s3cn_bucket_private ? :private : :public_read
+          @s3cn_bucket_obj.objects.create(key, stored_file, acl: permission)
           stored_file.close if stored_file && !stored_file.closed?
         end
 
